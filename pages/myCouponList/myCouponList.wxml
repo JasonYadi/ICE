@@ -1,0 +1,5 @@
+<view class="coupons">
+  <block wx:for="{{coupons}}" wx:key="index">
+    <coupon coupon-data="{{item}}" target="my"></coupon>
+  </block>
+</view>

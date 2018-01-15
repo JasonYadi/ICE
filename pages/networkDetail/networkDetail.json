@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bindUserInfo": "../bindUserInfo/bindUserInfo"
+  },
+  "navigationBarTitleText": "ICE艾西益外币兑换"
+}

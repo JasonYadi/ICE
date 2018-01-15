@@ -1,0 +1,33 @@
+.title{
+  padding:40rpx 30rpx;
+  font-size:28rpx;
+  color:#898989;
+}
+.citys{
+  padding:0 30rpx;
+  font-size:26rpx;
+  color:#333;
+  display: flex;
+  flex-wrap: wrap;
+}
+.city{
+  display: inline-block;
+  border-radius:3px;
+  padding:17rpx 0 18rpx;
+  margin-bottom:35rpx;
+  width:200rpx;
+  background:#e5e5e5;
+  color:#999999;
+  text-align: center;
+}
+.citys.open .city{
+  background:#fff;
+  color:#333;
+}
+.citys.open .city.active{
+  background:#30a8e4;
+  color:#fff;
+}
+.city:not(:nth-child(3n)){
+  margin-right:auto;
+}

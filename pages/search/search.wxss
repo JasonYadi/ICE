@@ -1,0 +1,51 @@
+.citys{
+  padding:21rpx 20rpx;
+  border-bottom:1px solid #eeeeee;
+  background:#fff;
+  font-size:24rpx;
+  color:#666666;
+  display: flex;
+}
+.citys .city{
+  display: inline-block;
+  border:1px solid #e5e5e5;
+  border-radius:50rpx;
+  padding:12rpx 0 11rpx;
+  box-sizing: border-box;
+  width:155rpx;
+  text-align: center;
+}
+.citys .city:not(:last-child){
+  margin-right: auto;
+}
+
+.items{
+  margin-top:20rpx;
+}
+.item{
+  padding:30rpx 20rpx 29rpx;
+  background:#fff;
+  font-size:28rpx;
+  position: relative;
+}
+.netwrokAddr{
+  margin-top:20rpx;
+  font-size:26rpx;
+  color:#999999;
+}
+.item:not(:last-child){
+  border-bottom:1px solid #e5e5e5;
+}
+.map{
+  position:absolute;
+  right:20rpx;
+  top:30rpx;
+  bottom:29rpx;
+  border-left:1px solid #e5e5e5;
+  padding-left:34rpx;
+  font-size:22rpx;
+  color:#999999;
+}
+.map-icon{
+  margin-bottom:18rpx;
+}

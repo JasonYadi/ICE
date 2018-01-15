@@ -1,0 +1,14 @@
+.items{
+  padding:27rpx 20rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item{
+  margin-bottom:22rpx;
+  width:345rpx;
+  height:345rpx;
+  overflow: hidden;
+}
+.item:nth-child(odd){
+  margin-right:auto;
+}

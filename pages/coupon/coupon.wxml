@@ -1,0 +1,11 @@
+<view class="citys">
+  <text class="city">北京</text>
+  <text class="city">上海</text>
+  <text class="city">广州</text>
+  <navigator class="city" url="../citys/citys">更多城市</navigator>
+</view> 
+<view class="coupons">
+  <block wx:for="{{reslut}}" wx:key="index">
+    <coupon coupon-data="{{item}}" target="coupons"></coupon>
+  </block>
+</view>

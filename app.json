@@ -1,0 +1,52 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/search/search",
+    "pages/coupon/coupon",
+    "pages/my/my",
+    "pages/bindUserInfo/bindUserInfo",
+    "pages/networkDetail/networkDetail",
+    "pages/newsDetail/newsDetail",
+    "pages/newsList/newsList",
+    "pages/customDetail/customDetail",
+    "pages/userMessage/userMessage",
+    "pages/couponDetail/couponDetail",
+    "pages/couponComponent/couponComponent",
+    "pages/citys/citys",
+    "pages/networkImageList/networkImageList",
+    "pages/myCouponList/myCouponList"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#2ea6e3",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1296db",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "pages/images/home.png",
+      "selectedIconPath": "pages/images/home_active.png"
+    },{
+      "pagePath": "pages/search/search",
+      "text": "查找",
+      "iconPath": "pages/images/search.png",
+      "selectedIconPath": "pages/images/search_active.png"
+    },
+    {
+      "pagePath": "pages/coupon/coupon",
+      "text": "优惠券",
+      "iconPath": "pages/images/coupon.png",
+      "selectedIconPath": "pages/images/coupon_active.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "pages/images/my.png",
+      "selectedIconPath": "pages/images/my_active.png"
+    }]
+  }
+}

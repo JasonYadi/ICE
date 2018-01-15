@@ -1,0 +1,56 @@
+<!-- 新闻轮播图 -->
+<view class="news_swiper">
+  <swiper indicator-color="#fff" indicator-active-color="#31a8e5" autoplay="true" interval="3000" duration="500" circular="true" bindchange="changeDots">
+    <block wx:for="{{imgs}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" mode="widthFix" style="width:100%" bindtap='toNewsDetail' data-news-id="{{index}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{imgs}}" wx:key="index">
+      <view class="dot {{index===swiperCurrent?'active':''}}"></view>
+    </block>
+  </view>
+  <navigator url="../newsList/newsList" class="toMore"></navigator>
+</view>
+<!-- 优惠活动 -->
+<view class="discountsActive">
+  <view class="title">
+    优惠活动
+    <navigator url="../coupon/coupon" open-type='switchTab' class="couponMore">MORE</navigator>
+  </view>
+  <view class="coupons">
+    <block wx:for="{{[0,0,0,0,0,0]}}" wx:key="index">
+      <view class="coupon {{isGet===1 ? 'is_get' : ''}}" bindtap="topCouponDetail" data-coupon-id="{{index}}">
+          <view class="coupon_name">
+            <view>
+              <view>手续费减半</view>优惠券
+            </view>
+            <view><text>5.0</text>折</view>
+          </view>
+          <view class="coupon_addr">首都机场T2国际出发网点</view>
+          <view class="coupon_status" catchtap="{{isGet===0 ? 'getCoupon' : ''}}">
+            <block wx:if="{{isGet===0}}"><view>立即领取</view></block>
+            <block wx:if="{{isGet===1}}"><view>已领取</view></block>
+            <view class="coupon_time">
+              有效期
+              <view>(01.15-02.09)</view>
+            </view>
+          </view>
+        </view>
+    </block>
+  </view>
+</view>
+
+<!-- 后台上传栏目 -->
+<view class="customs">
+  <block wx:for="{{[0,0,0,0]}}" wx:key="index">
+    <view class="custom" bindtap="toCustomDetail" data-custom-id="{{index}}">
+      <image src='../images/custom01.png' mode="widthFix" style="width:28rpx;"></image>
+      <text>公司介绍</text>
+    </view>
+  </block>
+</view>
+<!-- 未绑定身份信息和手机号码时的弹窗 -->
+<bindUserInfo show="{{isBind}}"></bindUserInfo>

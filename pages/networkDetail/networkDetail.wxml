@@ -1,0 +1,41 @@
+<view class="network_image" bindtap="toImages">
+  <image src="../images/network01.jpg" mode="widthFix" style="width:100%"></image>
+  <view class="to_images"><text>10</text> 张</view>
+</view>
+
+<view class="network_addr" bindtap="openMap" data-longitude="111.1123445" data-latitude="22.343252" data-network-name="长沙黄花国际机场T2" data-network-addr="湖南省长沙市长沙县黄花镇F1层">
+  <text>湖南省长沙市长沙县黄花镇F1层</text>
+  <view class="distance">距您2.01公里</view>
+</view>
+
+<view class="network_introduce">
+  <view class="title">联合货币兑换-国家外管局特许经营</view>
+  <view class="content">北京联合货币兑换有限公司是一家集货币兑换、跨境调运外币现钞及现钞批发、欧洲购物退税、电子旅行支票等业务为一体的外币现钞业务综合服务专业化公司。</view>
+</view>
+
+<view class="network_coupon">
+  <view class="title">网点优惠券</view>
+  <view class="coupons">
+    <block wx:for="{{[0,0,0,0]}}" wx:key="index">
+      <view class="coupon {{isGet===1 ? 'is_get' : ''}}" bindtap="topCouponDetail" data-coupon-id="{{index}}">
+        <view class="coupon_name">
+          <view>
+            <view>手续费减半</view>优惠券
+          </view>
+          <view><text>5.0</text>折</view>
+        </view>
+        <view class="coupon_addr">首都机场T2国际出发网点</view>
+        <view class="coupon_status" catchtap="{{isGet===0 && 'getCoupon'}}">
+          <block wx:if="{{isGet===0}}"><view>立即领取</view></block>
+          <block wx:if="{{isGet===1}}"><view>已领取</view></block>
+          <view class="coupon_time">
+            有效期
+            <view>(01.15-02.09)</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<bindUserInfo show="{{isBind}}"></bindUserInfo>

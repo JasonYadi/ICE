@@ -1,0 +1,24 @@
+.citys{
+  padding:21rpx 20rpx;
+  border-bottom:1px solid #eeeeee;
+  background:#fff;
+  font-size:24rpx;
+  color:#666666;
+  display: flex;
+}
+.citys .city{
+  display: inline-block;
+  border:1px solid #e5e5e5;
+  border-radius:50rpx;
+  padding:12rpx 0 11rpx;
+  box-sizing: border-box;
+  width:155rpx;
+  text-align: center;
+}
+.citys .city:not(:last-child){
+  margin-right: auto;
+}
+.coupons{
+  margin-top:30rpx;
+  padding:0 20rpx;
+}

@@ -1,0 +1,77 @@
+.coupon{
+  border-radius: 0 2px 0 2px;
+  margin-top:25rpx;
+  padding:28rpx 342rpx 27rpx 18rpx;
+  background:#31a8e5;
+  color:#fff;
+  background-image: radial-gradient(circle);
+  position: relative;
+  font-size:40rpx;
+}
+.coupon::after,
+.coupon::before{
+  content: "";
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  background-image: radial-gradient(circle,#ffffff,#ffffff 8rpx,transparent,transparent 15rpx);
+  background-size: 33rpx 33rpx;
+  background-repeat: repeat-y;
+  background-position: -3% 0 ;
+  z-index: 1;
+}
+.coupon::before{
+  background-position: 103% 0;
+}
+.couponName{
+  height:202rpx;
+  position: relative;
+  font-weight: 800;
+}
+.branch{
+  position: absolute;
+  bottom:7rpx;
+  font-size:28rpx;
+  font-weight: 200;
+}
+.discount{
+  position:absolute;
+  right:40rpx;
+  top:28rpx;
+  height:202rpx;
+  padding-left: 60rpx;
+  border-left: 1px dashed #ffffff;
+  z-index: 10;
+}
+.discount .validTime{
+  margin-top:15rpx;
+  font-size: 24rpx;
+  color:#99ccff;
+  text-align: center;
+}
+.status{
+  line-height:120rpx;
+  text-align: center;
+}
+.my_discount{
+  font-size:36rpx;
+  font-weight: 800;
+}
+.my_discount text{
+  font-size:130rpx;
+  font-family: Impact;
+  line-height: 110rpx;
+}
+.discounts{
+  position: absolute;
+  right:-45rpx;
+  top:0;
+  font-size: 27rpx;
+  font-weight: 800;
+}
+.discounts text{
+  font-size: 97.5rpx;
+  line-height: 97.5rpx;
+}

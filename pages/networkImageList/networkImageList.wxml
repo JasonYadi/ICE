@@ -1,0 +1,7 @@
+<view class="items">
+  <block wx:for="{{imageList}}" wx:key="index">
+    <view class="item">
+      <image src="{{item}}" bindtap="selectImage" data-src="{{item}}"></image>
+    </view>
+  </block>
+</view>

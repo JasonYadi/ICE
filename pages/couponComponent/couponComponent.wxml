@@ -1,0 +1,39 @@
+<block wx:if="{{couponData.is_get === 1 && target === 'my'}}">
+  <view class="coupon" bindtap="couponDetail" data-target="{{target}}" data-coupon-id="{{couponData.id}}">
+    <view class="couponName">
+      <view>{{couponData.name}}</view>
+      <view>优惠券</view>
+      <view class="branch">首都机场T2国际出发网点</view>
+    </view>
+    <view class="discount">
+      <view class="my_discount"><text>5.0</text>折</view>
+      <view class="validTime">
+        有效期
+        <view>(01.02-01.10)</view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:if="{{target != 'my'}}">
+  <view class="coupon" bindtap="couponDetail" data-target="{{couponData.is_get === 1 ? 'my':'other'}}" data-coupon-id="{{couponData.id}}" style="{{couponData.is_get === 1?'background:#cecece':''}}">
+    <view class="couponName">
+      <view>{{couponData.name}}</view>
+      <view>优惠券</view>
+      <view class="branch">首都机场T2国际出发网点</view>
+      <view class="discounts"><text>5.0</text>折</view>
+    </view>
+    <view class="discount" catchtap="{{couponData.is_get === 0?'getCoupon':''}}">
+      <block wx:if="{{couponData.is_get === 1}}">
+        <view class="status">已领取</view>
+      </block>
+      <block wx:if="{{couponData.is_get === 0}}">
+        <view class="status">立即领取</view>
+      </block>
+      <view class="validTime" style="{{couponData.is_get === 1?'color:#fff':''}}">
+        有效期
+        <view>(01.02-01.10)</view>
+      </view>
+    </view>
+  </view>
+</block>
+<bindUserInfo show="{{isBind}}"></bindUserInfo>

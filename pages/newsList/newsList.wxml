@@ -1,0 +1,12 @@
+<block wx:for="{{[0,0,0,0,0,0]}}" wx:key="index">
+  <view class="news_item" bindtap='toNewsDetail' data-news-id="{{index}}">
+    <view class="title">出国旅游？三分钟教你如何兑换外币最省钱！</view>
+    <view class="time">
+      <text class="author">IEC</text>
+      01-05 10:26
+    </view>
+    <view class="thumb">
+      <image src="../images/news01.jpg" mode="widthFix" style="width:220rpx;"></image>
+    </view>
+  </view>
+</block>

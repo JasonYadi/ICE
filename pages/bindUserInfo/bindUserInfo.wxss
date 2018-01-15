@@ -1,0 +1,92 @@
+.bind_user_info_container{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  background:rgba(0, 0, 0, 0.35);
+  transform: translateY(100%);
+  z-index: 999;
+}
+.bind_user_info_container.show{
+  transform: translateY(0)
+}
+.bind_user_info_content{
+  position:absolute;
+  bottom:0;
+  padding:85rpx 38rpx 0 40rpx;
+  width:100%;
+  height:905rpx;
+  background:#fff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform .5s ease;
+  z-index: 999;
+}
+.bind_user_info_content.show{
+  transform: translateY(0)
+}
+.bind_user_info_title{
+  font-size:36rpx;
+  text-align: center;
+}
+.bind_user_info_digest{
+  margin:25rpx 0 50rpx;
+  font-size:24rpx;
+  color:#333;
+  text-align: center;
+}
+.input_group{
+  position:relative;
+  padding:30rpx 0;
+  border-bottom:1px solid #e5e5e5;
+  text-align: center;
+  font-size:28rpx;
+}
+.input_group view{
+  position: absolute;
+  left:0;
+  top:50%;
+  transform: translateY(-50%);
+}
+.input_group view.getCode{
+  left:auto;
+  right:0;
+  padding:12rpx 21rpx;
+  border-radius:3px;
+  background:#1296db;
+  color:#fff;
+  z-index: 999;
+}
+.getButton button{
+  border-radius:8px;
+  margin-top:60rpx;
+  color:#fff;
+  background:#99ccff;
+}
+.getButton button::after{
+  width:0;height:0;
+}
+.closeModel{
+  position: absolute;
+  left:38rpx;
+  top:30rpx;
+  width: 38rpx;
+  height:38rpx;
+  z-index: 999;
+}
+.closeModel::after,
+.closeModel::before{
+  content: '';
+  position: absolute;
+  top:19rpx;
+  width:38rpx;
+  height:1px;
+  background:#999999;
+  transform: rotate(45deg);
+}
+.closeModel::before{
+  transform: rotate(-45deg)
+}

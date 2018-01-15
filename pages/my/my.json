@@ -1,0 +1,6 @@
+{
+  "usingComponents":{
+    "bindUserInfo":"../bindUserInfo/bindUserInfo"
+  },
+  "navigationBarTitleText": "我的"
+}
