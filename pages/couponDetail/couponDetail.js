@@ -46,6 +46,10 @@ Page({
     clearTimeout(this.data.timer);
     console.log(11)
   },
+  onHide:function(){
+    clearTimeout(this.data.timer);
+    console.log(22)
+  },
   setTimeoutErweima:function(id){
     const that = this;
     req('ice/check_use',{
@@ -53,7 +57,7 @@ Page({
     },function(res){
       const {is_use} = res.data;
       if(is_use === '0'){
-        const timer = setTimeout(() => that.setTimeoutErweima(id),500);
+        const timer = setTimeout(() => that.setTimeoutErweima(id),900);
         that.setData({
           timer:timer
         })

@@ -2,4 +2,7 @@
   <block wx:for="{{coupons}}" wx:key="index">
     <coupon coupon-data="{{item}}" target="my"></coupon>
   </block>
+  <block wx:if="{{coupons.length <= 0}}">
+    <navigator url="../coupon/coupon" open-type='switchTab' style="margin-top:30rpx;font-size:28rpx;color:#9b9b9b;text-decoration:underline;">还没有优惠券哦，赶快去领哦~</navigator>
+  </block>
 </view>

@@ -57,6 +57,7 @@ Component({
       },function(data){
         let {info} = data;
         if(info === '领取成功'){
+          app.isBind = 1;
           wx.showModal({
             title: '温馨提示',
             content: '恭喜您，领取成功！',

@@ -25,7 +25,11 @@ Page({
     app.setNavigationBarColor()//动态设置状态栏颜色
   },
   onShow: function () {
-    this.initData()
+    const that = this;
+    that.initData();
+    that.setData({
+      isBind: 0
+    })
   },
   initData:function(){//初始化数据
     let that = this
