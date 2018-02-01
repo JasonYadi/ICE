@@ -1,7 +1,7 @@
 .coupon{
   border-radius: 0 2px 0 2px;
   margin-top:25rpx;
-  padding:28rpx 342rpx 27rpx 18rpx;
+  padding:28rpx 290rpx 27rpx 18rpx;
   background:#31a8e5;
   color:#fff;
   background-image: radial-gradient(circle);
@@ -30,6 +30,9 @@
   position: relative;
   font-weight: 800;
 }
+.couponName view:first-child{
+  width:210rpx;
+}
 .branch{
   position: absolute;
   bottom:7rpx;
@@ -38,11 +41,14 @@
 }
 .discount{
   position:absolute;
-  right:40rpx;
+  right:0;
   top:28rpx;
-  height:202rpx;
-  padding-left: 60rpx;
+  padding-left: 20rpx;
+  padding-right:10rpx;
   border-left: 1px dashed #ffffff;
+  width:240rpx;
+  height:202rpx;
+  text-align: center;
   z-index: 10;
 }
 .discount .validTime{
@@ -66,7 +72,7 @@
 }
 .discounts{
   position: absolute;
-  right:-45rpx;
+  right:-4rpx;
   top:0;
   font-size: 27rpx;
   font-weight: 800;

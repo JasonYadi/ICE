@@ -2,6 +2,7 @@
 const app = getApp();
 const userCodeReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; //身份证正则
 const phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/;  //手机号码正则
+const req = app.request;
 Page({
 
   /**
@@ -11,9 +12,8 @@ Page({
     userName:"",
     userCode:"",
     phone:"",
-    isBind:false,
-    isAlter:true,
-    isPass:true,
+    isBind:false,//是否绑定
+    isAlter:true,//切换修改或保存
     getCodeTime:0,
     codeStr:"免费获取",
     verifyCode:''
@@ -22,11 +22,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.setNavigationBarColor()
+    const that = this;
+    app.setNavigationBarColor();
+    req('ice/personal',{},function(res){
+      const {id_card,mobile,user_login} = res.data;
+      if(app.isBind === 1){
+        that.setData({
+          userName: user_login,
+          userCode: id_card,
+          phone: mobile,
+          isBind:true,
+        })
+      }
+    })
   },
   submit:function(e){//提交或保存个人资料
-    let { phone, userCode, userName, verifyCode} = e.detail.value
-    let msg = "" , flag = false
+    const { phone, userCode, userName, verifyCode} = e.detail.value;
+    const that = this;
+    let msg = "" , flag = false;
     if(userName === ""){
       msg = "真实姓名不能为空！"
       flag = true
@@ -36,16 +49,27 @@ Page({
     }else if(!phoneReg.test(phone)){
       msg = "手机号码格式错误！"
       flag = true
+    } else if (verifyCode === '' || verifyCode != this.data.verifyCode) {
+      msg = "验证码错误！"
+      flag = true
     }
     if(flag){
       wx.showModal({
         title: '提示',
         content: msg,
-      })      
+      })
     }else{
-      this.setData({
-        isBind: true,
-        isAlter: true
+      req('ice/up_personal',{
+        user_name: userName,
+        id_card: userCode,
+        mobile: phone,
+        mobile_code: verifyCode,
+      },function(res){
+        that.setData({
+          isBind: true,
+          isAlter: true
+        });
+        app.isBind = res.data.bangding
       })
     }
   },
@@ -55,15 +79,12 @@ Page({
     })
   },
   getCode:function(e){//获取验证码
+    const that = this;
     if (!phoneReg.test(this.data.phone)){
       return wx.showModal({
         title: '提示',
         content: '手机号码错误！',
-        success:function(e){
-          if(e.confirm){
-
-          }
-        }
+        showCancel:false
       })
     }
     if(this.data.getCodeTime <= 0){
@@ -86,31 +107,23 @@ Page({
           })
         }
       }, 1000)
+      req('ice/send_msg',{
+        mobile: that.data.phone
+      },function(res){
+        that.setData({
+          verifyCode:res.data
+        })
+      })
     }
   },
   changeAlter:function(){//切换修改
     this.setData({
       isAlter:false,
-      isBind:false
     })
   },
-  judgePass:function(e){//验证码是否输入正确
-    let that = this 
-    if (this.data.verifyCode != '' && e.detail.value != this.data.verifyCode){
-      return wx.showModal({
-        title: '提示',
-        content: '验证输入错误',
-        success:function(e){
-          if(e.confirm){
-            that.setData({
-              isPass: false,
-            })
-          }
-        }
-      })
-    }
+  cancel:function(){//取消修改
     this.setData({
-      isPass: true,
+      isAlter:true
     })
   }
 })

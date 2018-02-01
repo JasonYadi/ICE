@@ -1,11 +1,14 @@
 <view class="citys">
-  <text class="city">北京</text>
-  <text class="city">上海</text>
-  <text class="city">广州</text>
-  <navigator class="city" url="../citys/citys">更多城市</navigator>
+  <text class="city" style="color:#25a1e1;" bindtap="changeCity" data-city-name="{{citys[0]}}">{{citys[0]}}</text>
+  <text class="city" bindtap="changeCity" data-city-name="{{citys[1]}}">{{citys[1]}}</text>
+  <text class="city" bindtap="changeCity" data-city-name="{{citys[2]}}">{{citys[2]}}</text>
+  <navigator class="city" url="../citys/citys?type=coupon&cityName={{citys[0]}}">更多城市</navigator>
 </view> 
 <view class="coupons">
   <block wx:for="{{reslut}}" wx:key="index">
     <coupon coupon-data="{{item}}" target="coupons"></coupon>
+  </block>
+  <block wx:if="{{reslut.length <= 0}}">
+    <view style="color:#9b9b9b;font-size:28rpx;text-align:center;">没有该城市的相关信息，请选择其他城市！</view>
   </block>
 </view>

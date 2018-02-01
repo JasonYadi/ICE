@@ -1,11 +1,13 @@
 // pages/customDetail/customDetail.js
+const app =getApp();
+const req = app.request;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    src:''
   },
 
   /**
@@ -13,5 +15,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    const that =this;
+    req('ice/campany',{
+      id: options.customId
+    },function(res){
+      that.setData({
+        src:res.data
+      })
+    })
   },
 })

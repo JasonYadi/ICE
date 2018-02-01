@@ -9,6 +9,7 @@
   position:absolute;
   top:35rpx;
   left:34rpx;
+  padding:5rpx;
   border: 1px solid #e6e6e6;
   border-radius: 100%;
   box-sizing: border-box;
@@ -17,13 +18,9 @@
   overflow: hidden;
 }
 .userHead image{
-  border-radius: 100%;
-  width: 120rpx;
-  position: absolute;
-  top:8rpx;
-  left:50%;
-  transform: translate(-50%);
-  line-height: 0;
+  border-radius: 120rpx;
+  width: 100%;
+  height:100%;
 }
 
 .items{

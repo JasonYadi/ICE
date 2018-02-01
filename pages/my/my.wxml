@@ -1,13 +1,13 @@
 <view class="userInfo">
   <view class="userHead">
-    <image src='{{userHead}}' mode='widthFix'></image>
+    <image src='{{userHead}}'></image>
   </view>
   {{userName}}
 </view>
 <view class="items">
   <navigator class="item" url="../userMessage/userMessage">个人资料</navigator>
   <navigator class="item coupon" url="../myCouponList/myCouponList">我的优惠券</navigator>
-  <view class="item phone" bindtap="phoneCall" data-phone="400-400-118">
-    客服电话：400-400-118 <text>(服务时间：9:00-23:00)</text>
+  <view class="item phone" bindtap="phoneCall" data-phone="{{phone}}">
+    客服电话：{{phone}} <text>(服务时间：{{time}})</text>
   </view>
 </view>

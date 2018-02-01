@@ -1,5 +1,7 @@
 // pages/my/my.js
-var app = getApp()
+const app = getApp();
+const req = app.request;
+
 Page({
 
   /**
@@ -7,7 +9,9 @@ Page({
    */
   data: {
     userHead:"",
-    userName:""
+    userName:"",
+    phone:'',
+    time:''
   },
 
   /**
@@ -16,20 +20,16 @@ Page({
   onLoad: function (options) {
     app.setNavigationBarColor();//修改导航栏背景以及字体颜色
     let that = this;
-    wx.login({
-      success:function(loginResult){
-        if(loginResult.code){
-          wx.getUserInfo({
-            success:function(userInfoResult){
-              var {userInfo} = userInfoResult
-              that.setData({
-                userHead: userInfo.avatarUrl,
-                userName: userInfo.nickName
-              })
-            }
-          })
-        }
-      }
+    that.setData({
+      userHead: wx.getStorageSync('avatarUrl'),
+      userName: wx.getStorageSync('userName')
+    })
+    req('ice/s_mobile',{},function(res){
+      let { s_mobile, s_time} = res.data;
+      that.setData({
+        phone:s_mobile,
+        time:s_time
+      })
     })
   },
   phoneCall:function(e){

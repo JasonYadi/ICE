@@ -1,2 +1,1 @@
-<!--pages/customDetail/customDetail.wxml-->
-<text>pages/customDetail/customDetail.wxml</text>
+<web-view src="{{src}}"></web-view>

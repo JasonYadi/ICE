@@ -1,13 +1,13 @@
 <view class="title">已开通城市</view>
 <view class="citys open">
-  <block wx:for="{{[1,2,1,1,1,1,1,1,1]}}" wx:key="key">
-    <text bindtap="selectCity" class="city {{'北京'+index == selectCity&&'active'}}" data-name="北京{{index}}">北京</text>
+  <block wx:for="{{openCity}}" wx:key="key">
+    <text bindtap="selectCity" class="city {{item.city_name == selectCity&&'active'}}" data-name="{{item.city_name}}">{{item.city_name}}</text>
   </block>
 </view>
 
-<view class="title">未开通城市</view>
+<view class="title">即将开通城市</view>
 <view class="citys ">
-  <block wx:for="{{[1,2,1,1,1,1,1,1,1]}}" wx:key="key">
-    <text class="city" data-name="北京">北京</text>
+  <block wx:for="{{unopenCity}}" wx:key="key">
+    <text class="city" data-name="{{item.city_name}}">{{item.city_name}}</text>
   </block>
 </view>

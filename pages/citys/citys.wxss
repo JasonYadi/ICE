@@ -29,5 +29,5 @@
   color:#fff;
 }
 .city:not(:nth-child(3n)){
-  margin-right:auto;
+  margin-right:45rpx;
 }

@@ -1,5 +1,6 @@
 .network_image{
   position: relative;
+  height:400rpx;
 }
 .to_images{
   position:absolute;
@@ -80,8 +81,9 @@
 }
 .coupon{
   margin-bottom:20rpx;
-  padding:14rpx 134rpx 15rpx 14rpx;
+  padding:17rpx 145rpx 15rpx 13rpx;
   width:345rpx;
+  height:117rpx;
   background:#31a8e5;
   color:#fff;
   position: relative;
@@ -143,6 +145,10 @@
   font-family: Impact;
 }
 .coupon_addr{
+  position:absolute;
+  bottom:15rpx;
+  left:13rpx;
+  right:145rpx;
   margin-top:30rpx;
   font-size:14rpx;
 }

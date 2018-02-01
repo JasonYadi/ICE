@@ -1,21 +1,24 @@
 <view class="citys">
-  <text class="city">北京</text>
-  <text class="city">上海</text>
-  <text class="city">广州</text>
-  <navigator class="city" url="../citys/citys">更多城市</navigator>
+  <text class="city" style="color:#25a1e1;" bindtap="changeCity" data-city-name="{{citys[0]}}">{{citys[0]}}</text>
+  <text class="city" bindtap="changeCity" data-city-name="{{citys[1]}}">{{citys[1]}}</text>
+  <text class="city" bindtap="changeCity" data-city-name="{{citys[2]}}">{{citys[2]}}</text>
+  <navigator class="city" url="../citys/citys?cityName={{citys[0]}}">更多城市</navigator>
 </view> 
 
 <view class="items">
-  <block wx:for="{{[0,0]}}" wx:key="index">
-    <view class="item" bindtap="toNetworkDetail" data-network-id="{{index}}">
-      <view class="netwrokName">长沙黄花国际机场T2</view>
-      <view class="netwrokAddr">湖南省长沙市长沙县黄花镇F1层</view>
-      <view class="map" catchtap="toMap" data-longitude="111.1123445" data-latitude="22.343252" data-network-name="长沙黄花国际机场T2" data-network-addr="湖南省长沙市长沙县黄花镇F1层">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="item" bindtap="toNetworkDetail" data-network-id="{{item.store_id}}" data-distance="{{item.juli}}">
+      <view class="netwrokName">{{item.store_name}}</view>
+      <view class="netwrokAddr">{{item.store_address}}</view>
+      <view class="map" catchtap="toMap" data-longitude="{{item.store_lng}}" data-latitude="{{item.store_lat}}" data-network-name="{{item.store_name}}" data-network-addr="{{item.store_address}}">
         <view class="map-icon">
           <image src="../images/map.png" mode="widthFix" style="width:30rpx;display:block;margin:0 auto;"></image>
         </view>
-        <text>距您2.01公里</text>
+        <text>距您{{item.juli}}公里</text>
       </view>
     </view>
+  </block>
+  <block wx:if="{{list.length <= 0}}">
+    <view style="color:#9b9b9b;font-size:28rpx;text-align:center;">没有该城市的相关信息，请选择其他城市！</view>
   </block>
 </view>

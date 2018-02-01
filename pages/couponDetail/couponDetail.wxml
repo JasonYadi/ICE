@@ -1,25 +1,25 @@
 <view class="coupons">
-    <coupon coupon-data="{{couponData}}" target="{{status}}"></coupon>
+    <coupon coupon-data="{{couponData}}" target="{{status}}" is-detail="1"></coupon>
 </view>
 
 <view class="items">
-  <view class="item branch" data-item="使用网点">首都机场T2国际出发网点</view>
-  <view class="item" data-item="有效日期">2018.01.02-2018.01.17</view>
+  <view class="item branch" data-item="使用网点">{{couponData.store[0].store_name}}</view>
+  <view class="item" data-item="有效日期">{{couponData.year_month_day}}</view>
 </view>
 
 <view class="instructions">
   <view class="title">使用说明</view>
-  <view class="content">使用条件：单笔购汇满1000澳大利亚，800欧元，10万日元，500新加坡，1000美元可用。</view>
+  <view class="content">{{couponData.content}}</view>
 </view>
 
 <block wx:if="{{status==='my'}}">
   <view class="coupon_code {{is_used===0?'':'isUsed'}}">
     <view class="title" data-use-status="{{is_used===0?'未使用':'已使用'}}">
-      券码：1010 1128 16
+      券码：{{couponData.num_code}}
     </view>
     <block wx:if="{{is_used===0}}">
       <view class="content">
-        <image src="{{'../images/erweima.png'}}" mode="widthFix" style="width:215rpx;display:block;margin:0 auto;"></image>
+        <image src="{{couponData.qr_code}}" mode="widthFix" style="width:215rpx;display:block;margin:0 auto;"></image>
       </view>
     </block>
   </view>

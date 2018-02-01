@@ -2,20 +2,20 @@
   <form bindsubmit="submit">
     <view class="input_group">
       <view class="label">姓名</view>
-      <input name="userName" disabled="{{isBind}}" placeholder='请输入您的真实姓名' placeholder-style='color:#999999' value="{{userName}}"></input>
+      <input name="userName" disabled="{{isBind && isAlter}}" placeholder='请输入您的真实姓名' placeholder-style='color:#999999' value="{{userName}}"></input>
     </view>
     <view class="input_group">
       <view class="label">身份证</view>
-      <input type="idcard" disabled="{{isBind}}" name="userCode" placeholder='请输入您的身份证号' placeholder-style='color:#999999' value="{{userCode}}"></input>
+      <input type="idcard" disabled="{{isBind && isAlter}}" name="userCode" placeholder='请输入您的身份证号' placeholder-style='color:#999999' value="{{userCode}}"></input>
     </view>
     <view class="input_group">
       <view class="label">手机号码</view>
-      <input type="number" disabled="{{isBind}}" bindblur="getPhone" name="phone" placeholder='请输入您的手机号' placeholder-style='color:#999999' value="{{phone}}"></input>
+      <input type="number" disabled="{{isBind && isAlter}}" bindblur="getPhone" name="phone" placeholder='请输入您的手机号' placeholder-style='color:#999999' value="{{phone}}"></input>
     </view>
-    <block wx:if="{{!isBind}}">
+    <block wx:if="{{!isBind || !isAlter}}">
       <view class="input_group verify_code">
         <view class="label">验证码</view>
-        <input name="verifyCode" focus="{{!isPass}}" bindblur="judgePass" placeholder='收到的验证码' placeholder-style='color:#999999' style="{{isPass?'':'color:#f00'}}"></input>
+        <input name="verifyCode" placeholder='收到的验证码' placeholder-style='color:#999999'></input>
         <view class="getCode" bindtap="getCode" data-codeStr="{{codeStr}}" style="{{getCodeTime<=0?'':'color:#999'}}"></view>
       </view>
     </block>
@@ -28,7 +28,8 @@
           <button bindtap="changeAlter" style="color:#999;background:#eee;">修改</button>
         </block>
         <block wx:else>
-          <button form-type="submit">保存</button>
+          <button form-type="submit" style="background-color:#d77;">保存</button>
+          <button bindtap="cancel" style="margin-top:30rpx;">取消</button>
         </block>
       </block>
     </view>

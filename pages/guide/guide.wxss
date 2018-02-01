@@ -1,0 +1,4 @@
+/* pages/guide/guide.wxss */
+page{
+  background:#fff;
+}

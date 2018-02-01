@@ -1,14 +1,14 @@
 <!-- 新闻轮播图 -->
 <view class="news_swiper">
   <swiper indicator-color="#fff" indicator-active-color="#31a8e5" autoplay="true" interval="3000" duration="500" circular="true" bindchange="changeDots">
-    <block wx:for="{{imgs}}" wx:key="index">
+    <block wx:for="{{newsImages}}" wx:key="index">
       <swiper-item>
-        <image src="{{item}}" mode="widthFix" style="width:100%" bindtap='toNewsDetail' data-news-id="{{index}}"/>
+        <image src="{{item.img}}" mode="widthFix" style="width:100%" bindtap='toNewsDetail' data-news-id="{{item.banner_id}}"/>
       </swiper-item>
     </block>
   </swiper>
   <view class="dots">
-    <block wx:for="{{imgs}}" wx:key="index">
+    <block wx:for="{{newsImages.length}}" wx:key="index">
       <view class="dot {{index===swiperCurrent?'active':''}}"></view>
     </block>
   </view>
@@ -21,21 +21,22 @@
     <navigator url="../coupon/coupon" open-type='switchTab' class="couponMore">MORE</navigator>
   </view>
   <view class="coupons">
-    <block wx:for="{{[0,0,0,0,0,0]}}" wx:key="index">
-      <view class="coupon {{isGet===1 ? 'is_get' : ''}}" bindtap="topCouponDetail" data-coupon-id="{{index}}">
+    <block wx:for="{{conpons}}" wx:key="index">
+      <view class="coupon {{item.is_get==='1' ? 'is_get' : ''}}" bindtap="topCouponDetail" data-coupon-id="{{item.card_id}}" data-target="{{item.is_get==='1'?'my':''}}">
           <view class="coupon_name">
             <view>
-              <view>手续费减半</view>优惠券
+              <view>{{item.name}}</view>
+              <!-- 优惠券 -->
             </view>
-            <view><text>5.0</text>折</view>
+            <view><text>{{item.youhui}}</text>折</view>
           </view>
-          <view class="coupon_addr">首都机场T2国际出发网点</view>
-          <view class="coupon_status" catchtap="{{isGet===0 ? 'getCoupon' : ''}}">
-            <block wx:if="{{isGet===0}}"><view>立即领取</view></block>
-            <block wx:if="{{isGet===1}}"><view>已领取</view></block>
+          <view class="coupon_addr">{{item.store[0].store_name}}</view>
+          <view class="coupon_status" catchtap="{{item.is_get==='0' ? 'getCoupon' : ''}}" data-coupon-id="{{item.card_id}}">
+            <block wx:if="{{item.is_get==='0'}}"><view>立即领取</view></block>
+            <block wx:if="{{item.is_get==='1'}}"><view>已领取</view></block>
             <view class="coupon_time">
               有效期
-              <view>(01.15-02.09)</view>
+              <view>({{item.month_day}})</view>
             </view>
           </view>
         </view>
@@ -45,12 +46,12 @@
 
 <!-- 后台上传栏目 -->
 <view class="customs">
-  <block wx:for="{{[0,0,0,0]}}" wx:key="index">
-    <view class="custom" bindtap="toCustomDetail" data-custom-id="{{index}}">
-      <image src='../images/custom01.png' mode="widthFix" style="width:28rpx;"></image>
-      <text>公司介绍</text>
+  <block wx:for="{{customs}}" wx:key="index">
+    <view class="custom" bindtap="toCustomDetail" data-custom-id="{{item.id}}">
+      <image src='{{item.img}}' mode="widthFix" style="width:28rpx;"></image>
+      <text>{{item.name}}</text>
     </view>
   </block>
 </view>
 <!-- 未绑定身份信息和手机号码时的弹窗 -->
-<bindUserInfo show="{{isBind}}"></bindUserInfo>
+<bindUserInfo show="{{isBind}}" coupon-id="{{couponId}}"></bindUserInfo>

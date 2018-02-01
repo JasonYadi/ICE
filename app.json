@@ -14,11 +14,12 @@
     "pages/couponComponent/couponComponent",
     "pages/citys/citys",
     "pages/networkImageList/networkImageList",
+    "pages/guide/guide",
     "pages/myCouponList/myCouponList"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#2ea6e3",
+    "navigationBarBackgroundColor": "#25a1e1",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"white"
   },

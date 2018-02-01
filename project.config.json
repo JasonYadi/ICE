@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -17,6 +17,10 @@
 			"list": []
 		},
 		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
 			"current": -1,
 			"list": []
 		},
@@ -69,7 +73,7 @@
 					"id": 7,
 					"name": "优惠券详情",
 					"pathName": "pages/couponDetail/couponDetail",
-					"query": ""
+					"query": "couponId=22"
 				},
 				{
 					"id": -1,
@@ -93,13 +97,37 @@
 					"id": 11,
 					"name": "网点详情",
 					"pathName": "pages/networkDetail/networkDetail",
-					"query": ""
+					"query": "networkId=27&distance=3.25"
 				},
 				{
 					"id": -1,
 					"name": "网点图片集",
 					"pathName": "pages/networkImageList/networkImageList",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "城市",
+					"pathName": "pages/citys/citys",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查找",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新闻列表",
+					"pathName": "pages/newsList/newsList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新闻详情",
+					"pathName": "pages/newsDetail/newsDetail",
+					"query": "newsId=1"
 				}
 			]
 		}

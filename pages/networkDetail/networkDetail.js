@@ -1,5 +1,6 @@
 // pages/networkDetail/networkDetail.js
 const app = getApp();
+const req = app.request;
 Page({
 
   /**
@@ -7,19 +8,36 @@ Page({
    */
   data: {
     isGet:0,
-    isBind:0
+    isBind:0,
+    data:{},
+    distance:0,
+    couponId:'',
+    id:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const that = this;
+    that.initNewworkList(options.networkId);
+    that.setData({
+      distance: options.distance,
+      id: options.networkId
+    })
+  },
+  onReady: function () {
     app.setNavigationBarColor();
-    console.log(options)
+  },
+  onShow:function(){
+    const that = this;
+    if(that.data.id){
+      that.initNewworkList(that.data.id)
+    }
   },
   toImages:function(e){
     wx.navigateTo({
-      url: '../networkImageList/networkImageList',
+      url: '../networkImageList/networkImageList?list=' + JSON.stringify(this.data.data.img),
     })
   },
   openMap:function(e){//打开地图
@@ -33,16 +51,48 @@ Page({
     })
   },
   getCoupon:function(e){//获取优惠券
-    if(app.isBind === 0){
-      return this.setData({
-        isBind:1
+    let { couponId } = e.currentTarget.dataset;
+    if (app.isBind == '0') {
+      this.setData({
+        couponId: couponId,
+        isBind: 1
       })
-    }
+      return;
+    };
+    req('ice/get_card', {
+      card_id: couponId,
+    }, function (res) {
+      if (res.info === '领取成功') {
+        wx.showModal({
+          title: '温馨提示',
+          content: '恭喜您，领取成功！',
+          showCancel: false,
+          success: function (e) {
+            if (e.confirm) {
+              wx.navigateTo({
+                url: '../couponDetail/couponDetail?couponId=' + couponId + '&status=my',
+              })
+            }
+          }
+        })
+      }
+    })
   },
   topCouponDetail:function(e){
     let {couponId} = e.currentTarget.dataset
     wx.navigateTo({
       url: '../couponDetail/couponDetail?couponId=' + couponId
+    })
+  },
+  initNewworkList:function(id){//获取详情信息
+    const that = this;
+    req('ice/chose_store',{
+      store_id:id
+    },function(res){
+      console.log(res)
+      that.setData({
+        data:res.data
+      })
     })
   }
 })
